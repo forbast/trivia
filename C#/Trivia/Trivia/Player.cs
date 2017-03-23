@@ -1,23 +1,41 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace Trivia
 {
-    class Player
+    internal class Player
     {
-        public string Nom { get; set; }
-        public int Place { get; set; }
-        public int Purse { get; set; }
+        public string Name { get; private set; }
+
+        public int Place { get; private set; }
+
+        public int GoldCoins { get; private set; }
+
         public bool InPenaltyBox { get; set; }
 
-        public Player(string nom)
+        public Player(string name)
         {
-            Nom = nom;
+            Name = name;
             Place = 0;
-            Purse = 0;
+            GoldCoins = 0;
             InPenaltyBox = false;
+        }
+
+
+        public void Move(int roll)
+        {
+            Place += roll;
+            if (Place > 11) Place -= 12;
+        }
+
+        public void WinAGoldCoin()
+        {
+            GoldCoins++;
+            Console.WriteLine(Name + " now has " + GoldCoins + " Gold Coins.");
+        }
+
+        public void GoToPenaltyBox()
+        {
+            InPenaltyBox = true;
         }
     }
 }
