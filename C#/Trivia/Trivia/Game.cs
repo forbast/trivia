@@ -56,6 +56,7 @@ namespace Trivia
             return true;
         }
 
+
         public void Roll(int roll)
         {
             Console.WriteLine(_currentPlayer.Name + " is the current player");
