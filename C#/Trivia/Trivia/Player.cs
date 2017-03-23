@@ -7,19 +7,17 @@ namespace Trivia
 {
     class Player
     {
-        private String _nom;
-        
-        public string Nom
+        public string Nom { get; set; }
+        public int Place { get; set; }
+        public int Purse { get; set; }
+        public bool InPenaltyBox { get; set; }
+
+        public Player(string nom)
         {
-            get { return _nom; }
-            set { _nom = value; }
+            Nom = nom;
+            Place = 0;
+            Purse = 0;
+            InPenaltyBox = false;
         }
-
-        public Player(String nom)
-        {
-            this._nom = nom;
-        }
-
-
     }
 }
