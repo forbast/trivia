@@ -9,26 +9,16 @@ namespace Trivia
         private readonly List<Player> _players = new List<Player>();
         private readonly Dictionary<int, string> _categories = new Dictionary<int, string>() { { 0, "Pop" }, { 1, "Science" }, { 2, "Sports" }, { 3, "Rock" } };
 
-        QuestionStack popQuestions = new QuestionStack("Pop");
-        QuestionStack scienceQuestions = new QuestionStack("Science");
-        QuestionStack sportsQuestions = new QuestionStack("Sports");
-        QuestionStack rockQuestions = new QuestionStack("Rock");
+        QuestionStacks _questionStacks = new QuestionStacks();
+
+        public Game()
+        {
+            _questionStacks.GenerateStacksQuestions();
+        }
 
         bool isGettingOutOfPenaltyBox;
 
         private Player _currentPlayer;
-
-
-        public Game()
-        {
-            for (var i = 0; i < 50; i++)
-            {
-                popQuestions.AddLast("Pop Question " + i);
-                scienceQuestions.AddLast(("Science Question " + i));
-                sportsQuestions.AddLast(("Sports Question " + i));
-                rockQuestions.AddLast("Rock Question " + i);
-            }
-        }
 
         private void NextPlayer()
         {
@@ -70,7 +60,7 @@ namespace Trivia
                             + "'s new location is "
                             + _currentPlayer.Place);
                     Console.WriteLine("The category is " + CurrentCategory());
-                    AskQuestion();
+                    _questionStacks.AskQuestion(this.CurrentCategory());
                 }
                 else
                 {
@@ -87,30 +77,11 @@ namespace Trivia
                         + "'s new location is "
                         + _currentPlayer.Place);
                 Console.WriteLine("The category is " + CurrentCategory());
-                AskQuestion();
+                _questionStacks.AskQuestion(this.CurrentCategory());
             }
 
         }
 
-        private void AskQuestion()
-        {
-            if (CurrentCategory() == popQuestions.Categorie)
-            {
-                popQuestions.ReadFirstQuestion();
-            }
-            if (CurrentCategory() == scienceQuestions.Categorie)
-            {
-                scienceQuestions.ReadFirstQuestion();
-            }
-            if (CurrentCategory() == sportsQuestions.Categorie)
-            {
-                sportsQuestions.ReadFirstQuestion();
-            }
-            if (CurrentCategory() == rockQuestions.Categorie)
-            {
-                rockQuestions.ReadFirstQuestion();
-            }
-        }
 
 
         private string CurrentCategory()
