@@ -10,9 +10,9 @@ namespace Trivia
         private readonly Dictionary<int, string> _categories = new Dictionary<int, string>() { { 0, "Pop" }, { 1, "Science" }, { 2, "Sports" }, { 3, "Rock" } };
 
         QuestionStack popQuestions = new QuestionStack("Pop");
-        LinkedList<string> scienceQuestions = new LinkedList<string>();
-        LinkedList<string> sportsQuestions = new LinkedList<string>();
-        LinkedList<string> rockQuestions = new LinkedList<string>();
+        QuestionStack scienceQuestions = new QuestionStack("Science");
+        QuestionStack sportsQuestions = new QuestionStack("Sports");
+        QuestionStack rockQuestions = new QuestionStack("Rock");
 
         bool isGettingOutOfPenaltyBox;
 
@@ -26,7 +26,7 @@ namespace Trivia
                 popQuestions.AddLast("Pop Question " + i);
                 scienceQuestions.AddLast(("Science Question " + i));
                 sportsQuestions.AddLast(("Sports Question " + i));
-                rockQuestions.AddLast(CreateRockQuestion(i));
+                rockQuestions.AddLast("Rock Question " + i);
             }
         }
 
@@ -35,11 +35,6 @@ namespace Trivia
             var nextPlayer = _players.IndexOf(_currentPlayer) + 1;
             if (nextPlayer == _players.Count) nextPlayer = 0;
             _currentPlayer = _players[nextPlayer];
-        }
-
-        public string CreateRockQuestion(int index)
-        {
-            return "Rock Question " + index;
         }
 
         public bool Add(string playerName)
@@ -99,25 +94,21 @@ namespace Trivia
 
         private void AskQuestion()
         {
-            if (CurrentCategory() == popQuestions.Type)
+            if (CurrentCategory() == popQuestions.Categorie)
             {
                 popQuestions.ReadFirstQuestion();
-
             }
-            if (CurrentCategory() == "Science")
+            if (CurrentCategory() == scienceQuestions.Categorie)
             {
-                Console.WriteLine(scienceQuestions.First());
-                scienceQuestions.RemoveFirst();
+                scienceQuestions.ReadFirstQuestion();
             }
-            if (CurrentCategory() == "Sports")
+            if (CurrentCategory() == sportsQuestions.Categorie)
             {
-                Console.WriteLine(sportsQuestions.First());
-                sportsQuestions.RemoveFirst();
+                sportsQuestions.ReadFirstQuestion();
             }
-            if (CurrentCategory() == "Rock")
+            if (CurrentCategory() == rockQuestions.Categorie)
             {
-                Console.WriteLine(rockQuestions.First());
-                rockQuestions.RemoveFirst();
+                rockQuestions.ReadFirstQuestion();
             }
         }
 

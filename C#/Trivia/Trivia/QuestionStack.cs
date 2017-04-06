@@ -7,24 +7,24 @@ namespace Trivia
 {
     class QuestionStack
     {
-        LinkedList<string> popQuestions = new LinkedList<string>();
-        public string Type { get; private set; }
+        LinkedList<string> questions = new LinkedList<string>();
+        public string Categorie { get; private set; }
 
 
-        public QuestionStack(string type)
+        public QuestionStack(string categorie)
         {
-            this.Type = type;
+            this.Categorie = categorie;
         }
 
         public void AddLast(string s)
         {
-            popQuestions.AddLast(s);
+            questions.AddLast(s);
         }
 
         public void ReadFirstQuestion()
         {
-            Console.WriteLine(popQuestions.First());
-            popQuestions.RemoveFirst();
+            Console.WriteLine(questions.First());
+            questions.RemoveFirst();
         }
     }
 }
