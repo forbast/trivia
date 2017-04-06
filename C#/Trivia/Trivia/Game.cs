@@ -9,7 +9,7 @@ namespace Trivia
         private readonly List<Player> _players = new List<Player>();
         private readonly Dictionary<int, string> _categories = new Dictionary<int, string>() { { 0, "Pop" }, { 1, "Science" }, { 2, "Sports" }, { 3, "Rock" } };
 
-        LinkedList<string> popQuestions = new LinkedList<string>();
+        QuestionStack popQuestions = new QuestionStack("Pop");
         LinkedList<string> scienceQuestions = new LinkedList<string>();
         LinkedList<string> sportsQuestions = new LinkedList<string>();
         LinkedList<string> rockQuestions = new LinkedList<string>();
@@ -99,10 +99,10 @@ namespace Trivia
 
         private void AskQuestion()
         {
-            if (CurrentCategory() == "Pop")
+            if (CurrentCategory() == popQuestions.Type)
             {
-                Console.WriteLine(popQuestions.First());
-                popQuestions.RemoveFirst();
+                popQuestions.ReadFirstQuestion();
+
             }
             if (CurrentCategory() == "Science")
             {
