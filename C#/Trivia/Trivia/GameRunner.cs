@@ -12,7 +12,7 @@ namespace Trivia
             for (int i = 0; i < 100; i++)
             {
 
-                Console.WriteLine("--------------- Partie " + i + "----------------------");
+                Console.WriteLine("--------------- Partieee " + i + "----------------------");
                 Game aGame = new Game();
 
                 aGame.Add("Chet");
