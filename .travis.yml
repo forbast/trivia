@@ -1,2 +1,2 @@
 language: csharp 
-solution: trivia/C#/Trivia/Trivia.sln
+solution: C#/Trivia/Trivia.sln
