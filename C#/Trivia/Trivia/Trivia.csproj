@@ -65,9 +65,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ConsoleDisplay.cs" />
     <Compile Include="Game.cs" />
     <Compile Include="GameRunner.cs" />
     <Compile Include="GeneratedQuestions.cs" />
+    <Compile Include="IDisplay.cs" />
     <Compile Include="IQuestionsRepository.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Players.cs" />
